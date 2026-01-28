@@ -1,18 +1,18 @@
 import {createSlice} from "@reduxjs/toolkit";
 import type { PayloadAction } from '@reduxjs/toolkit'
 
-export interface ParametersState {
+export interface InstanceState {
   instanceId: string;
   ApiTokenInstance: string;
 }
 
-const initialState: ParametersState = {
+const initialState: InstanceState = {
   instanceId: '',
   ApiTokenInstance: '',
 }
 
-export const parametersSlice = createSlice({
-  name: 'parameters',
+export const instanceSlice = createSlice({
+  name: 'instance',
   initialState,
   reducers: {
     updateInstanceId: (state, action: PayloadAction<string>) => {
@@ -24,6 +24,6 @@ export const parametersSlice = createSlice({
   }
 });
 
-export const { updateInstanceId, updateApiTokenInstance } = parametersSlice.actions;
+export const { updateInstanceId, updateApiTokenInstance } = instanceSlice.actions;
 
-export default parametersSlice.reducer;
+export default instanceSlice.reducer;

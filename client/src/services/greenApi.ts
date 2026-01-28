@@ -14,11 +14,12 @@ const dynamicBaseQuery: BaseQueryFn<
   const { getState } = api;
   const state = getState() as RootState;
 
+  console.log(args)
   const path = typeof args === 'string' ? args : args.url;
-  const url = `/waInstance/${state.parameters.instanceId}/${path}/${state.parameters.ApiTokenInstance}`;
+  const url = `/waInstance/${state.instance.instanceId}/${path}/${state.instance.ApiTokenInstance}`;
 
   const adjustedArgs = typeof args === 'string' ? url : { ...args, url };
-
+  
   return rawBaseQuery(adjustedArgs, api, extraOptions)
 };
 
@@ -26,10 +27,10 @@ export const greenApi = createApi({
   reducerPath: 'greenApi',
   baseQuery: dynamicBaseQuery,
   endpoints: (builder) => ({
-    getSettings: builder.query({
+    getSettings: builder.query<any, void>({
       query: () => 'getSettings'
     }),
-    getStateInstance: builder.query({
+    getStateInstance: builder.query<any, void>({
       query: () => 'getStateInstance' 
     }),
   })
