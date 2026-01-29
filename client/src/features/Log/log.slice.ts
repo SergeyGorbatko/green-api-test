@@ -17,6 +17,12 @@ const logSlice = createSlice({
         (state, action) => {
           state.value = action.payload;
         },
+      )
+      .addMatcher(
+        greenApi.endpoints.sendMessage.matchFulfilled,
+        (state, action) => {
+          state.value = action.payload;
+        },
       );
   },
 });

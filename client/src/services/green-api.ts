@@ -49,5 +49,8 @@ export const greenApi = createApi({
   }),
 });
 
-export const { useLazyGetSettingsQuery, useLazyGetStateInstanceQuery } =
-  greenApi;
+export const {
+  useLazyGetSettingsQuery,
+  useLazyGetStateInstanceQuery,
+  useSendMessageMutation,
+} = greenApi;

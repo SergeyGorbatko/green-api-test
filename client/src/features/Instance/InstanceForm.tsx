@@ -23,7 +23,7 @@ export default function InstanceForm() {
     getSettingsState.isFetching || getStateInstanceState.isFetching;
 
   return (
-    <>
+    <div className="col">
       <input
         placeholder="idInstance"
         value={instanceId}
@@ -47,6 +47,6 @@ export default function InstanceForm() {
       >
         Get State Instance
       </button>
-    </>
+    </div>
   );
 }
