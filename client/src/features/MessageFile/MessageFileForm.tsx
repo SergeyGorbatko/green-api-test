@@ -28,7 +28,7 @@ export default function MessageFileForm() {
         disabled={isLoading}
         onClick={() => sendFileByUrl({ instanceId, body: { chatId, urlFile } })}
       >
-        Send Message
+        Send File By Url
       </button>
     </div>
   );
