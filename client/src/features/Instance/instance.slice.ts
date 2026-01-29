@@ -1,29 +1,30 @@
-import {createSlice} from "@reduxjs/toolkit";
-import type { PayloadAction } from '@reduxjs/toolkit'
+import { createSlice } from "@reduxjs/toolkit";
+import type { PayloadAction } from "@reduxjs/toolkit";
 
 export interface InstanceState {
-  instanceId: string;
-  ApiTokenInstance: string;
+  id: string;
+  token: string;
 }
 
 const initialState: InstanceState = {
-  instanceId: '',
-  ApiTokenInstance: '',
-}
+  id: "",
+  token: "",
+};
 
 export const instanceSlice = createSlice({
-  name: 'instance',
+  name: "instance",
   initialState,
   reducers: {
     updateInstanceId: (state, action: PayloadAction<string>) => {
-      state.instanceId = action.payload;
+      state.id = action.payload;
     },
     updateApiTokenInstance: (state, action: PayloadAction<string>) => {
-      state.ApiTokenInstance = action.payload;
+      state.token = action.payload;
     },
-  }
+  },
 });
 
-export const { updateInstanceId, updateApiTokenInstance } = instanceSlice.actions;
+export const { updateInstanceId, updateApiTokenInstance } =
+  instanceSlice.actions;
 
 export default instanceSlice.reducer;

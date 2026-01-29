@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { greenApi } from "../../services/greenApi";
+import { greenApi } from "../../services/green-api";
 const logSlice = createSlice({
   name: "log",
-  initialState: {value: ""},
+  initialState: { value: "" },
   reducers: {},
   extraReducers: (builder) => {
     builder
@@ -10,15 +10,15 @@ const logSlice = createSlice({
         greenApi.endpoints.getSettings.matchFulfilled,
         (state, action) => {
           state.value = action.payload;
-        }
+        },
       )
       .addMatcher(
         greenApi.endpoints.getStateInstance.matchFulfilled,
         (state, action) => {
           state.value = action.payload;
-        }
+        },
       );
-  }
+  },
 });
 
 export default logSlice.reducer;
