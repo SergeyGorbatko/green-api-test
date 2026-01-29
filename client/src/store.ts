@@ -5,12 +5,14 @@ import { greenApi } from "./services/green-api";
 import { useSelector, type TypedUseSelectorHook } from "react-redux";
 import instanceReducer from "./features/Instance/instance.slice";
 import messageReducer from "./features/Message/message.slice";
+import messageFileReducer from "./features/MessageFile/message-file.slice";
 import logReducer from "./features/Log/log.slice";
 
 export const store = configureStore({
   reducer: combineReducers({
     instance: instanceReducer,
     message: messageReducer,
+    messageFile: messageFileReducer,
     log: logReducer,
     [greenApi.reducerPath]: greenApi.reducer,
   }),

@@ -23,6 +23,12 @@ const logSlice = createSlice({
         (state, action) => {
           state.value = action.payload;
         },
+      )
+      .addMatcher(
+        greenApi.endpoints.sendFileByUrl.matchFulfilled,
+        (state, action) => {
+          state.value = action.payload;
+        },
       );
   },
 });

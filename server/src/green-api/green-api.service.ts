@@ -3,6 +3,7 @@ import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { firstValueFrom } from 'rxjs';
 import { SendMessageDto } from './dto/send-message.dto';
+import { SendFileByUrlDto } from './dto/send-file-by-url.dto';
 
 @Injectable()
 export class GreenApiService {
@@ -30,6 +31,15 @@ export class GreenApiService {
   async sendMessage(id: string, token: string, body: SendMessageDto) {
     const url = `${this.baseUrl}/waInstance${id}/sendMessage/${token}`;
     const { data } = await firstValueFrom(this.http.post(url, body));
+    return data;
+  }
+
+  async sendFileByUrl(id: string, token: string, body: SendFileByUrlDto) {
+    const url = `${this.baseUrl}/waInstance${id}/sendFileByUrl/${token}`;
+    const fileName = body.urlFile.split('.').pop() || 'file';
+    const { data } = await firstValueFrom(
+      this.http.post(url, { ...body, fileName }),
+    );
     return data;
   }
 }

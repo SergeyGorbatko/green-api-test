@@ -46,6 +46,17 @@ export const greenApi = createApi({
         body,
       }),
     }),
+    sendFileByUrl: builder.mutation<
+      any,
+      { instanceId: string; body: { chatId: string; urlFile: string } }
+    >({
+      query: ({ instanceId, body }) => ({
+        url: "sendFileByUrl",
+        method: "POST",
+        params: { id: instanceId },
+        body,
+      }),
+    }),
   }),
 });
 
@@ -53,4 +64,5 @@ export const {
   useLazyGetSettingsQuery,
   useLazyGetStateInstanceQuery,
   useSendMessageMutation,
+  useSendFileByUrlMutation,
 } = greenApi;

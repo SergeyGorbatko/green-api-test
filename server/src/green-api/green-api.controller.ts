@@ -11,6 +11,7 @@ import { BearerTokenGuard } from 'src/common/guards/bearer-token.guard';
 import type { RequestWithToken } from 'src/common/types/request-with-token';
 import { GreenApiService } from './green-api.service';
 import { SendMessageDto } from './dto/send-message.dto';
+import { SendFileByUrlDto } from './dto/send-file-by-url.dto';
 
 @Controller('green-api')
 export class GreenApiController {
@@ -36,5 +37,15 @@ export class GreenApiController {
     @Req() req: RequestWithToken,
   ) {
     return this.service.sendMessage(id, req.token, body);
+  }
+
+  @UseGuards(BearerTokenGuard)
+  @Post('sendFileByUrl')
+  sendFileByUrl(
+    @Query('id') id: string,
+    @Body() body: SendFileByUrlDto,
+    @Req() req: RequestWithToken,
+  ) {
+    return this.service.sendFileByUrl(id, req.token, body);
   }
 }
